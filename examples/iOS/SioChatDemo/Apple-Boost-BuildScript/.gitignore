@@ -1,0 +1,6 @@
+## Project-specific
+src/
+build/
+*.tar.bz2
+
+.DS_Store

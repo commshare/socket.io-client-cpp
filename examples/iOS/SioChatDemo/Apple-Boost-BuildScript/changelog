@@ -1,0 +1,154 @@
+-- 2019-09-20 --
+* Use bintray rather than sourceforge for downloads
+
+-- 2019-08-14 --
+* Fixed my being stupid, doing bash arrays wrong, and breaking everyone
+
+-- 2019-07-01 --
+* Added minimum version flags for the iOS and tvOS simulators
+* iOS Simulator binaries now only build to match the specified
+  iOS architecture - e.g. if you only build arm64, only the x86_64
+  simulator binary is produced, rather than both x86_64 and i386.
+* Fixed a problem trying to lipo universal binaries when built
+  binaries only contained a single architecture.
+* Updated README (a little).
+* Updated default minimum OS versions
+
+-- 2018-12-19 --
+* Added ability to compile debug variant (pr#35)
+
+-- 2018-09-20 --
+* Added support for building 32/64-bit macOS universal
+* Fixed macOS target problem that caused user-config.jam to be ignored
+* Fixed macOS specific share_ptr crasher caused by using -DBOOST_AC_USE_PTHREADS -DBOOST_SP_USE_PTHREADS
+
+-- 2018-08-24 --
+* Fixed incorrect ordering of params for tar command
+
+-- 2018-08-21 --
+* Disabled hiding symbols & inlines
+  - This was causing clang to throw warnings, regardless of the project's
+    visibility settings. I don't see any reason it needs to be enabled
+	anyways.
+
+	If this causes a problem for your project let me know and I will add a
+	CLI flag to optionally add them back in (or just do it yourself &
+	submit a PR!)
+	
+-- 2018-08-15 --
+* Fixed universal build to allow for build directories that contain spaces
+
+-- 2018-08-14 --
+* Fixed I'm stupid and forgot how line contiuations work in Bash...
+
+-- 2018-07-27 --
+* Updated Boost version to 1.67.0
+* Fixed tvOS build
+
+-- 2018-06-07 --
+* Added a CLI flag to create universal FAT binaries for iOS and tvOS.
+
+-- 2018-06-06 --
+* Added a CLI flag to place framework headers in a 'boost' root directory.
+
+-- 2018-02-20 --
+* Added command line options for macOS architectures
+* Added command line options for iOS architectures
+* Added '--purge' command line option
+* Set iOS architecture to arm64 only, if the minimum iOS version is 11.0
+  or newer
+
+-- 2018-02-13 --
+* Fixed enforcing the minimum macOS version
+
+-- 2017-02-24 --
+* Updated default Boost version to 1.63.0
+* Changed min iOS version to 10.0
+* Changed min tvOS version to 10.0
+* Added a parameter to specify the number of threads to use
+* Changed all 'OSX' variable names to 'macOS'
+* Changed the name of the log when building for iOS from "iphone-build.log" to
+  "ios-build.log"
+* Fixed a couple of badly placed braces in the parameter parsing function.
+  This should have caused the script to crash when those parameters were used.
+  I dunno how or if that ever worked.
+* Added more documentation for the --boost-libs parameter. For some reason I
+  actually bothered to take the time to build each one of these individually
+  and figure out what builds for what. Still a couple things I'm not sure
+  about, but... whatever, it's close enough for now. If you want / need more,
+  ask.
+
+-- 2016-05-18 --
+* Added tvOS support
+* Moved build output to a build directory. All output will now be located at:
+	{pwd}/build/boost/{boost_version}/{build_target}/
+* Only the currently building target will be cleaned (meaning if you are
+  building for ios, the osx and tvos output & build directories won't be
+  removed).
+* Quoted all the path strings (you know, in case you like putting spaces in
+  your paths). (Thanks to JanX2 for this)
+* Build output is redirected to a log file, rather than stdout / stderr. This
+  log file will be located in the target build output directory.
+* No longer backup / restore user-config.jam. (No need, since it's being
+  written each time the script is run for each target anyways).
+
+-- 2015-09-22 UPDATE --
+Added command line args!
+You can now specify if you want to build just for iOS or OS X, along with some
+other things.
+Run boost.sh -h for more info.
+Let me know if there are any other parameters that you think would be useful.
+
+-- 2015-09-18 UPDATE --
+Fixed script for iOS Simulator (Thanks @XMitja!)
+• There is now a MIN_IOS_VERSION variable. Make sure you set this
+appropriately.
+
+cleanup function now actually removes all build artifacts
+
+Fixed updateBoost function to move the existing user-config.jam instead 
+of copying it. Copying it resulted in writing duplicate entries each time 
+the script was run.
+
+NOTE: Currently does not build with bitcode. I will figure that one out when I
+get time. 
+I'm at the cusp of a product release though, so it might be a little while. 
+Just disable bitcode for your project for the time being.
+
+-- 2015-08-26 UPDATE --
+The resulting libraries from this script are currently not working for
+the iOS simulator under Xcode 7 as of beta 6. I have an issue opened
+with Apple about this. It does still work for physical devices though.
+As soon as I figure out what the problem is, I will post an update.
+
+-- 2014-12-29 UPDATE --
+
+Updated to work with Boost 1.56, 1.57, and 1.58
+
+Automatically choose the currently selected SDK for both iOS and OSX
+
+Fixed a couple places where the wrong $XXX_DEV_CMD was being used
+
+-- END UPDATE --
+
+This is a modified version of Pete Goodliffe's original boost.sh build script,
+(and a couple of other sources whom I can't remember)
+
+The original version didn't work with the 64-bit iPhone Simulator,
+and didn't build at all for OSX.
+
+This works for Boost 1.56 and 1.57. If you need the version that builds 1.55
+and older, use this gist:
+	https://gist.github.com/faithfracture/c629ae4c7168216a9856/61be257e1c0839c85743777d0687becad9913bf7
+
+I also ran into an issue where utf8_codecvt_facet.o existed in both the 
+program_options and filesystem libraries. When linking against the
+framework, there was a missing vtable entry for it. Adding the step
+in unpackArchive() that prepends the library name to the .o files
+prevents this error.
+
+I hope this keeps at least one other person from ripping their hair out.
+
+Let me know if you find errors or have optimizations.
+
+I will be updating this as often as necessary.
