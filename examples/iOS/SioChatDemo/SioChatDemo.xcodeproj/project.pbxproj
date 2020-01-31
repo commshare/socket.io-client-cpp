@@ -334,6 +334,7 @@
 				TargetAttributes = {
 					CE3B3B391AC8F365003CEB94 = {
 						CreatedOnToolsVersion = 6.1.1;
+						DevelopmentTeam = U4268LRM8J;
 					};
 					CE3B3B521AC8F365003CEB94 = {
 						CreatedOnToolsVersion = 6.1.1;
@@ -352,6 +353,7 @@
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
 			knownRegions = (
+				English,
 				en,
 				Base,
 			);
@@ -546,8 +548,10 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = U4268LRM8J;
 				INFOPLIST_FILE = SioChatDemo/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.socketio.zhangbin.SioChatDemo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Debug;
@@ -556,8 +560,10 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = U4268LRM8J;
 				INFOPLIST_FILE = SioChatDemo/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.socketio.zhangbin.SioChatDemo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Release;
@@ -608,9 +614,9 @@
 					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
 					"$(SIOROOT)/lib/websocketpp",
 					"$(SIOROOT)/lib/rapidjson/include",
-					"$(SRCROOT)/boost/ios/prefix/include",
+					"$(SRCROOT)/Apple-Boost-BuildScript/build/boost/1.70.0/ios/release/prefix/include",
 				);
-				LIBRARY_SEARCH_PATHS = "$(SRCROOT)/boost/ios/build/$(CURRENT_ARCH)/";
+				LIBRARY_SEARCH_PATHS = "$(SRCROOT)/Apple-Boost-BuildScript/build/boost/1.70.0/ios/release/build/$(CURRENT_ARCH)/";
 				OTHER_LDFLAGS = "-ObjC";
 				OTHER_LIBTOOLFLAGS = "-lboost_random -lboost_date_time -lboost_system";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -627,9 +633,9 @@
 					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
 					"$(SIOROOT)/lib/websocketpp",
 					"$(SIOROOT)/lib/rapidjson/include",
-					"$(SRCROOT)/boost/ios/prefix/include",
+					"$(SRCROOT)/Apple-Boost-BuildScript/build/boost/1.70.0/ios/release/prefix/include",
 				);
-				LIBRARY_SEARCH_PATHS = "$(SRCROOT)/boost/ios/build/$(CURRENT_ARCH)/";
+				LIBRARY_SEARCH_PATHS = "$(SRCROOT)/Apple-Boost-BuildScript/build/boost/1.70.0/ios/release/build/$(CURRENT_ARCH)/";
 				OTHER_LDFLAGS = "-ObjC";
 				OTHER_LIBTOOLFLAGS = "-lboost_random -lboost_date_time -lboost_system";
 				PRODUCT_NAME = "$(TARGET_NAME)";

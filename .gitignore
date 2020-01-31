@@ -1,2 +1,6 @@
+examples/iOS/SioChatDemo/Apple-Boost-BuildScript/build/
+ioslibs/
 build/
 **/*.user
+buildimac/
+buildios/
