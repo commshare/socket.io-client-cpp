@@ -7,6 +7,14 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		77802DBE23E46853002B7D3F /* sio_socket.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CE2958621ACE2CD6000ABD30 /* sio_socket.cpp */; };
+		77802DBF23E46853002B7D3F /* sio_packet.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CE1D319E1AD5087800895150 /* sio_packet.cpp */; };
+		77802DC023E46853002B7D3F /* sio_client_impl.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CE2958671ACE442F000ABD30 /* sio_client_impl.cpp */; };
+		77802DC123E46853002B7D3F /* sio_client.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CE3B3E871ACA5446003CEB94 /* sio_client.cpp */; };
+		77802DC523E46853002B7D3F /* sio_message.h in Headers */ = {isa = PBXBuildFile; fileRef = CE3B3E891ACA5446003CEB94 /* sio_message.h */; };
+		77802DC623E46853002B7D3F /* sio_packet.h in Headers */ = {isa = PBXBuildFile; fileRef = CE1D319F1AD5087800895150 /* sio_packet.h */; };
+		77802DC723E46853002B7D3F /* sio_client.h in Headers */ = {isa = PBXBuildFile; fileRef = CE3B3E881ACA5446003CEB94 /* sio_client.h */; };
+		77802DE323E48ED8002B7D3F /* libsioclient_tls.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 77802DCB23E46853002B7D3F /* libsioclient_tls.a */; };
 		CE1D31A01AD5087800895150 /* sio_packet.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CE1D319E1AD5087800895150 /* sio_packet.cpp */; };
 		CE1D31A11AD5087800895150 /* sio_packet.h in Headers */ = {isa = PBXBuildFile; fileRef = CE1D319F1AD5087800895150 /* sio_packet.h */; };
 		CE2958691ACE4589000ABD30 /* sio_client_impl.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CE2958671ACE442F000ABD30 /* sio_client_impl.cpp */; };
@@ -18,7 +26,6 @@
 		CE3B3B5A1AC8F365003CEB94 /* SioChatDemoTests.m in Sources */ = {isa = PBXBuildFile; fileRef = CE3B3B591AC8F365003CEB94 /* SioChatDemoTests.m */; };
 		CE3B3B651AC8F385003CEB94 /* CRViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = CE3B3B641AC8F385003CEB94 /* CRViewController.mm */; };
 		CE3B3B751AC8F438003CEB94 /* libsioclient.a in Frameworks */ = {isa = PBXBuildFile; fileRef = CE3B3B6A1AC8F438003CEB94 /* libsioclient.a */; };
-		CE3B3E6D1AC8FE59003CEB94 /* libsioclient.a in Frameworks */ = {isa = PBXBuildFile; fileRef = CE3B3B6A1AC8F438003CEB94 /* libsioclient.a */; };
 		CE3B3E6F1AC9139B003CEB94 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CE3B3E6E1AC9139B003CEB94 /* Main.storyboard */; };
 		CE3B3E8C1ACA5446003CEB94 /* sio_client.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CE3B3E871ACA5446003CEB94 /* sio_client.cpp */; };
 		CE3B3E8D1ACA5446003CEB94 /* sio_client.h in Headers */ = {isa = PBXBuildFile; fileRef = CE3B3E881ACA5446003CEB94 /* sio_client.h */; };
@@ -26,6 +33,13 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		77802DCC23E479BF002B7D3F /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = CE3B3B321AC8F365003CEB94 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 77802DBC23E46853002B7D3F;
+			remoteInfo = sioclient_tls;
+		};
 		CE3B3B541AC8F365003CEB94 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = CE3B3B321AC8F365003CEB94 /* Project object */;
@@ -40,16 +54,18 @@
 			remoteGlobalIDString = CE3B3B691AC8F438003CEB94;
 			remoteInfo = sioclient;
 		};
-		CE3B3E6B1AC8FE54003CEB94 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = CE3B3B321AC8F365003CEB94 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = CE3B3B691AC8F438003CEB94;
-			remoteInfo = sioclient;
-		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
+		77802DC323E46853002B7D3F /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "include/$(PRODUCT_NAME)";
+			dstSubfolderSpec = 16;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		CE3B3B681AC8F438003CEB94 /* CopyFiles */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
@@ -62,6 +78,9 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		77802DCB23E46853002B7D3F /* libsioclient_tls.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libsioclient_tls.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		77802DD123E485FF002B7D3F /* libcrypto.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libcrypto.a; path = "../../../../../OpenSSL-for-iPhone/bin/iPhoneSimulator13.2-x86_64.sdk/lib/libcrypto.a"; sourceTree = "<group>"; };
+		77802DD223E485FF002B7D3F /* libssl.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libssl.a; path = "../../../../../OpenSSL-for-iPhone/bin/iPhoneSimulator13.2-x86_64.sdk/lib/libssl.a"; sourceTree = "<group>"; };
 		CE1D319E1AD5087800895150 /* sio_packet.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = sio_packet.cpp; sourceTree = "<group>"; };
 		CE1D319F1AD5087800895150 /* sio_packet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = sio_packet.h; sourceTree = "<group>"; };
 		CE2958621ACE2CD6000ABD30 /* sio_socket.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = sio_socket.cpp; sourceTree = "<group>"; };
@@ -90,11 +109,18 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		77802DC223E46853002B7D3F /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		CE3B3B371AC8F365003CEB94 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CE3B3E6D1AC8FE59003CEB94 /* libsioclient.a in Frameworks */,
+				77802DE323E48ED8002B7D3F /* libsioclient_tls.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -123,6 +149,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		77802DD023E485FF002B7D3F /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				77802DD123E485FF002B7D3F /* libcrypto.a */,
+				77802DD223E485FF002B7D3F /* libssl.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		CE2958651ACE2CDD000ABD30 /* internal */ = {
 			isa = PBXGroup;
 			children = (
@@ -143,6 +178,7 @@
 				CE3B3B6B1AC8F438003CEB94 /* sioclient */,
 				CE3B3B781AC8F438003CEB94 /* sioclientTests */,
 				CE3B3B3B1AC8F365003CEB94 /* Products */,
+				77802DD023E485FF002B7D3F /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -153,6 +189,7 @@
 				CE3B3B531AC8F365003CEB94 /* SioChatDemoTests.xctest */,
 				CE3B3B6A1AC8F438003CEB94 /* libsioclient.a */,
 				CE3B3B741AC8F438003CEB94 /* sioclientTests.xctest */,
+				77802DCB23E46853002B7D3F /* libsioclient_tls.a */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -238,6 +275,16 @@
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
+		77802DC423E46853002B7D3F /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				77802DC523E46853002B7D3F /* sio_message.h in Headers */,
+				77802DC623E46853002B7D3F /* sio_packet.h in Headers */,
+				77802DC723E46853002B7D3F /* sio_client.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		CE3B3E681AC8F511003CEB94 /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
@@ -251,6 +298,24 @@
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
+		77802DBC23E46853002B7D3F /* sioclient_tls */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 77802DC823E46853002B7D3F /* Build configuration list for PBXNativeTarget "sioclient_tls" */;
+			buildPhases = (
+				77802DBD23E46853002B7D3F /* Sources */,
+				77802DC223E46853002B7D3F /* Frameworks */,
+				77802DC323E46853002B7D3F /* CopyFiles */,
+				77802DC423E46853002B7D3F /* Headers */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = sioclient_tls;
+			productName = sioclient;
+			productReference = 77802DCB23E46853002B7D3F /* libsioclient_tls.a */;
+			productType = "com.apple.product-type.library.static";
+		};
 		CE3B3B391AC8F365003CEB94 /* SioChatDemo */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = CE3B3B5D1AC8F365003CEB94 /* Build configuration list for PBXNativeTarget "SioChatDemo" */;
@@ -262,7 +327,7 @@
 			buildRules = (
 			);
 			dependencies = (
-				CE3B3E6C1AC8FE54003CEB94 /* PBXTargetDependency */,
+				77802DCD23E479BF002B7D3F /* PBXTargetDependency */,
 			);
 			name = SioChatDemo;
 			productName = SioChatDemo;
@@ -366,6 +431,7 @@
 				CE3B3B521AC8F365003CEB94 /* SioChatDemoTests */,
 				CE3B3B691AC8F438003CEB94 /* sioclient */,
 				CE3B3B731AC8F438003CEB94 /* sioclientTests */,
+				77802DBC23E46853002B7D3F /* sioclient_tls */,
 			);
 		};
 /* End PBXProject section */
@@ -398,6 +464,17 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		77802DBD23E46853002B7D3F /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				77802DBE23E46853002B7D3F /* sio_socket.cpp in Sources */,
+				77802DBF23E46853002B7D3F /* sio_packet.cpp in Sources */,
+				77802DC023E46853002B7D3F /* sio_client_impl.cpp in Sources */,
+				77802DC123E46853002B7D3F /* sio_client.cpp in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		CE3B3B361AC8F365003CEB94 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -437,6 +514,11 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		77802DCD23E479BF002B7D3F /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 77802DBC23E46853002B7D3F /* sioclient_tls */;
+			targetProxy = 77802DCC23E479BF002B7D3F /* PBXContainerItemProxy */;
+		};
 		CE3B3B551AC8F365003CEB94 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = CE3B3B391AC8F365003CEB94 /* SioChatDemo */;
@@ -446,11 +528,6 @@
 			isa = PBXTargetDependency;
 			target = CE3B3B691AC8F438003CEB94 /* sioclient */;
 			targetProxy = CE3B3B761AC8F438003CEB94 /* PBXContainerItemProxy */;
-		};
-		CE3B3E6C1AC8FE54003CEB94 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = CE3B3B691AC8F438003CEB94 /* sioclient */;
-			targetProxy = CE3B3E6B1AC8FE54003CEB94 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -466,6 +543,54 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		77802DC923E46853002B7D3F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PREPROCESSOR_DEFINITIONS = "$(inherited)";
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
+					"$(SIOROOT)/lib/websocketpp",
+					"$(SIOROOT)/lib/rapidjson/include",
+					"$(SRCROOT)/Apple-Boost-BuildScript/build/boost/1.70.0/ios/release/prefix/include",
+					"\"$(SRCROOT)/../../../../../OpenSSL-for-iPhone/bin/iPhoneSimulator13.2-x86_64.sdk/include\"",
+				);
+				LIBRARY_SEARCH_PATHS = (
+					"$(SRCROOT)/Apple-Boost-BuildScript/build/boost/1.70.0/ios/release/build/$(CURRENT_ARCH)/",
+					"\"$(SRCROOT)/../../../../../OpenSSL-for-iPhone/bin/iPhoneSimulator13.2-x86_64.sdk/lib\"",
+				);
+				OTHER_LDFLAGS = "-ObjC";
+				OTHER_LIBTOOLFLAGS = "-lboost_random -lboost_date_time -lboost_system -lcrypto -lssl";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SIOROOT = "$(SRCROOT)/../../../";
+				SKIP_INSTALL = YES;
+			};
+			name = Debug;
+		};
+		77802DCA23E46853002B7D3F /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PREPROCESSOR_DEFINITIONS = "$(inherited)";
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
+					"$(SIOROOT)/lib/websocketpp",
+					"$(SIOROOT)/lib/rapidjson/include",
+					"$(SRCROOT)/Apple-Boost-BuildScript/build/boost/1.70.0/ios/release/prefix/include",
+					"\"$(SRCROOT)/../../../../../OpenSSL-for-iPhone/bin/iPhoneSimulator13.2-x86_64.sdk/include\"",
+				);
+				LIBRARY_SEARCH_PATHS = (
+					"$(SRCROOT)/Apple-Boost-BuildScript/build/boost/1.70.0/ios/release/build/$(CURRENT_ARCH)/",
+					"\"$(SRCROOT)/../../../../../OpenSSL-for-iPhone/bin/iPhoneSimulator13.2-x86_64.sdk/lib\"",
+				);
+				OTHER_LDFLAGS = "-ObjC";
+				OTHER_LIBTOOLFLAGS = "-lboost_random -lboost_date_time -lboost_system -lcrypto -lssl";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SIOROOT = "$(SRCROOT)/../../../";
+				SKIP_INSTALL = YES;
+			};
+			name = Release;
+		};
 		CE3B3B5B1AC8F365003CEB94 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -490,8 +615,8 @@
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PREPROCESSOR_DEFINITIONS = (
+					"SIO_TLS=1",
 					"DEBUG=1",
-					"$(inherited)",
 				);
 				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
@@ -500,7 +625,9 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				HEADER_SEARCH_PATHS = "\"$(SRCROOT)/../../../../../OpenSSL-for-iPhone/bin/iPhoneSimulator13.2-x86_64.sdk/include\"";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
+				LIBRARY_SEARCH_PATHS = "\"$(SRCROOT)/../../../../../OpenSSL-for-iPhone/bin/iPhoneSimulator13.2-x86_64.sdk/lib\"";
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -530,13 +657,16 @@
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_PREPROCESSOR_DEFINITIONS = "SIO_TLS=1";
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
 				GCC_WARN_UNDECLARED_SELECTOR = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				HEADER_SEARCH_PATHS = "\"$(SRCROOT)/../../../../../OpenSSL-for-iPhone/bin/iPhoneSimulator13.2-x86_64.sdk/include\"";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
+				LIBRARY_SEARCH_PATHS = "\"$(SRCROOT)/../../../../../OpenSSL-for-iPhone/bin/iPhoneSimulator13.2-x86_64.sdk/lib\"";
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -677,6 +807,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		77802DC823E46853002B7D3F /* Build configuration list for PBXNativeTarget "sioclient_tls" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				77802DC923E46853002B7D3F /* Debug */,
+				77802DCA23E46853002B7D3F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		CE3B3B351AC8F365003CEB94 /* Build configuration list for PBXProject "SioChatDemo" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (

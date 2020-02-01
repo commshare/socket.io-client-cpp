@@ -11,6 +11,7 @@
 #include <boost/date_time/posix_time/posix_time.hpp>
 #include <mutex>
 #include <cmath>
+#include <openssl/err.h> 
 // Comment this out to disable handshake logging to stdout
 #if DEBUG || _DEBUG
 #define LOG(x) std::cout << x
@@ -20,8 +21,17 @@
 
 using boost::posix_time::milliseconds;
 using namespace std;
-
-namespace sio
+//https://stackoverflow.com/questions/42106339/how-to-get-the-error-string-in-openssl
+string getOpenSSLError()
+{
+    BIO *bio = BIO_new(BIO_s_mem());
+    ERR_print_errors(bio);
+    char *buf;
+    size_t len = BIO_get_mem_data(bio, &buf);
+    string ret(buf, len);
+    BIO_free(bio);
+    return ret;
+}namespace sio
 {
     /*************************public:*************************/
     client_impl::client_impl() :
@@ -41,7 +51,11 @@ namespace sio
 #endif
         // Initialize the Asio transport policy
         m_client.init_asio();
-
+#if SIO_TLS
+        std::cout <<"===enable SIO_TLS ok ==="<<std::endl;
+#else
+        std::cout <<"===enable SIO_TLS fail ==="<<std::endl;
+#endif
         // Bind the clients we are using
         using websocketpp::lib::placeholders::_1;
         using websocketpp::lib::placeholders::_2;
@@ -50,6 +64,7 @@ namespace sio
         m_client.set_fail_handler(lib::bind(&client_impl::on_fail,this,_1));
         m_client.set_message_handler(lib::bind(&client_impl::on_message,this,_1,_2));
 #if SIO_TLS
+        LOG("===client_impl:set_tls_init_handler:on_tls_init===" << endl);
         m_client.set_tls_init_handler(lib::bind(&client_impl::on_tls_init,this,_1));
 #endif
         m_packet_mgr.set_decode_callback(lib::bind(&client_impl::on_decode,this,_1));
@@ -204,8 +219,10 @@ namespace sio
             websocketpp::uri uo(uri);
             ostringstream ss;
 #if SIO_TLS
+            LOG("==ssl =client_impl:connect_impl:wss===" << endl);
             ss<<"wss://";
 #else
+            LOG("==no ssl =client_impl:connect_impl:ws===" << endl);
             ss<<"ws://";
 #endif
             const std::string host(uo.get_host());
@@ -570,13 +587,29 @@ failed:
 #if SIO_TLS
     client_impl::context_ptr client_impl::on_tls_init(connection_hdl conn)
     {
-        context_ptr ctx = context_ptr(new  boost::asio::ssl::context(boost::asio::ssl::context::tlsv1));
+        context_ptr ctx ;
+        boost::system::error_code ec1;
+
+        try {
+            //add by me ,not used ???
+            SSL_library_init();
+            ctx = context_ptr(new  boost::asio::ssl::context(boost::asio::ssl::context::tlsv1));
+        } catch (std::exception &ee) {
+            ERR_print_errors_fp(stderr);
+            std::cout<<"==>" <<getOpenSSLError() <<" ==>"<< ee.what()<<std::endl;
+            if(ec1)
+            {
+               std::cout <<" Init tls failed,reason: " <<ec1.message() <<std::endl;
+            }
+        }
+       
         boost::system::error_code ec;
         ctx->set_options(boost::asio::ssl::context::default_workarounds |
                              boost::asio::ssl::context::no_sslv2 |
                              boost::asio::ssl::context::single_dh_use,ec);
         if(ec)
         {
+             std::cout <<" Init tls failed,reason: " <<ec.message() <<std::endl;
             cerr<<"Init tls failed,reason:"<< ec.message()<<endl;
         }
         
